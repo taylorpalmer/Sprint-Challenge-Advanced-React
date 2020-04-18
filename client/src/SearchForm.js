@@ -9,7 +9,7 @@ export default function SearchForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmit(formState);
+    props.onSubmit(setFormState);
   };
 
   return (

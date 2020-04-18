@@ -29,10 +29,8 @@ class App extends React.Component {
 
     return (
       <div>
-        <SearchForm onSubmit={(searchTerm) => this.setState(searchTerm)} />
-        {/* {filtered.map((player) => (
-          <p>{player.name}</p>
-        ))} */}
+        <SearchForm />
+
         <h2>Players</h2>
         <ul>
           {this.state.players.map((player) => (
