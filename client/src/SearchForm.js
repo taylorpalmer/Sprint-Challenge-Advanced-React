@@ -2,13 +2,14 @@ import React from "react";
 import { useLocalStorage } from "./hooks";
 
 export default function SearchForm(props) {
+  console.log(props);
   const [formState, setFormState, handleChanges] = useLocalStorage({
     name: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(formState);
+    props.onSubmit(formState);
   };
 
   return (

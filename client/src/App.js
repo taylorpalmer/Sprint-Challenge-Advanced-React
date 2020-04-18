@@ -8,10 +8,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       players: [],
+      search: "",
     };
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
     axios
       .get("http://localhost:5000/api/players")
       .then((res) => {
@@ -22,9 +23,16 @@ class App extends React.Component {
   }
 
   render() {
+    // const filtered = this.state.players.filter((player) =>
+    //   player.name.toLowerCase().startsWith(this.state.search.toLowerCase())
+    // );
+
     return (
       <div>
-        <SearchForm />
+        <SearchForm onSubmit={(searchTerm) => this.setState(searchTerm)} />
+        {/* {filtered.map((player) => (
+          <p>{player.name}</p>
+        ))} */}
         <h2>Players</h2>
         <ul>
           {this.state.players.map((player) => (
