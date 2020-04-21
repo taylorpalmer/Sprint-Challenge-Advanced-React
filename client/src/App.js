@@ -7,7 +7,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       players: [],
-      search: "",
     };
   }
 
@@ -20,6 +19,8 @@ class App extends React.Component {
       })
       .catch((err) => console.log(err));
   }
+
+  componentDidUpdate() {}
 
   render() {
     return (
