@@ -1,15 +1,15 @@
 import React from "react";
-import { useLocalStorage } from "./hooks";
+import useLocalStorage from "./hooks";
 
 export default function SearchForm(props) {
   console.log(props);
-  const [formState, setFormState, handleChanges] = useLocalStorage({
+  const [formState, setFormState] = useLocalStorage("form", {
     name: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmit(setFormState);
+    props.onSubmit(formState.name);
   };
 
   return (
@@ -19,7 +19,9 @@ export default function SearchForm(props) {
           <input
             type="text"
             value={formState.name}
-            onChange={handleChanges}
+            onChange={(e) =>
+              setFormState({ ...formState, name: e.target.value })
+            }
             placeholder="Search Players"
           />
           <button type="submit">Search</button>

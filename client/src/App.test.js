@@ -26,5 +26,3 @@ test("displays players title", () => {
   const container = render(<App />);
   container.getByText(/players/i);
 });
-
-test("", () => {});

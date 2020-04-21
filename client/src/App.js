@@ -23,13 +23,13 @@ class App extends React.Component {
   }
 
   render() {
-    // const filtered = this.state.players.filter((player) =>
-    //   player.name.toLowerCase().startsWith(this.state.search.toLowerCase())
-    // );
-
     return (
       <div>
-        <SearchForm />
+        <SearchForm
+          onSubmit={(search) => {
+            this.setState({ ...this.state, search });
+          }}
+        />
 
         <h2>Players</h2>
         <ul>
