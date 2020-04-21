@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 
-const PlayerList = () => {
+import App from "./App";
+
+const PlayerList = (props) => {
   const ToggleColor = (initialState) => {
     const [textColor, setTextColor] = useLocalStorage("colored", initialState);
 
@@ -13,19 +15,22 @@ const PlayerList = () => {
     return [textColor, setTextColor];
   };
 
+  const [textColor, setTextColor] = ToggleColor(false);
   const toggleMode = (e) => {
     e.preventDefault();
-    this.setState({ toggleColor: !ToggleColor });
+    setTextColor(!textColor);
   };
 
   return (
-    <div
-      onClick={toggleMode}
-      className={ToggleColor ? "toggle toggled" : "toggle"}
-    >
+    <div>
       <ul>
-        {this.state.players.map((player) => (
-          <li>{player.name}</li>
+        {props.players.map((player) => (
+          <li
+            onClick={toggleMode}
+            className={ToggleColor ? "toggle toggled" : "toggle"}
+          >
+            {player.name}
+          </li>
         ))}
       </ul>
     </div>

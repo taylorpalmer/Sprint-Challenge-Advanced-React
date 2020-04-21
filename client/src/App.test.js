@@ -14,3 +14,13 @@ test("player from list displays", () => {
 
   getByText(/julie ertz/i);
 });
+
+test("toggles text to red", () => {
+  const { getByText } = render(<App />);
+
+  const li = getByText(/toggle/i);
+  fireEvent.click(li);
+
+  const color = getByText(/color/i);
+  expect(color.textContent).toContain("red");
+});
